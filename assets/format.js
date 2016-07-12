@@ -28,4 +28,9 @@ app.controller('formatCtrl', function($scope) {
     $scope.storage();
   };
 
+  $scope.showme = true;
+  $scope.submit = function () {
+    $scope.showme = !$scope.showme;
+  }
+
 });

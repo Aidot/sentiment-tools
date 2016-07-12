@@ -12,7 +12,10 @@
 <body ng-app="formatApp">
   <p style="height:32px"></p>
   <div class="container" ng-controller="formatCtrl">
-    <form id="format_form">
+    <form id="format_form" ng-show="showme">
+      <button type="button" class="btn btn-default" ng-click="submit()">Generate</button>
+      <button type="reset" class="btn btn-default btn-link">Reset</button>
+      <hr>
       <div class="form-group">
         <label for="format_date">When it happened?</label>
         <input type="text" class="form-control" ng-model="formatData.when">
@@ -44,10 +47,30 @@
        <label for="format_consequence">What happened next</label>
        <input type="text" class="form-control" ng-model="formatData.consequence" ng-change="update()">
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-
-      <button type="reset" class="btn btn-default btn-link">Reset</button>
     </form>
+
+    <form id="format_show" ng-show="!showme">
+      <button type="button" class="btn btn-default" ng-click="submit()">Back</button>
+      <hr>
+      <div class="form-group">
+       <label for="format_consequence">Text</label>
+       <textarea class="form-control" rows="12" ng-click="copy()">
+* Time: {{formatData.when}}
+* Situation, Triggers:
+{{formatData.trigger}}
+* My Thoughts:
+{{formatData.thought}}
+* My Feelings:
+{{formatData.feeling}}
+* Intensity: {{formatData.intensity}}
+* My Behaviors:
+{{formatData.behavior}}
+* Consequences
+{{formatData.consequence}}
+       </textarea>
+      </div>
+    </form>
+
   </div>
 </body>
 </html>
