@@ -34,3 +34,19 @@ app.controller('formatCtrl', function($scope) {
   }
 
 });
+// * Bot Assistant Q&A
+app.controller('fbotCtrl', function ($scope) {
+  $scope.questions = {
+    1: 'When it happened?',
+    2: 'Situation, Triggers?'
+  };
+  var i = 0;
+  $scope.question = 'Hey, I’m a friendly bot. Please tell me what is on your mind so we can help you:)';
+  $scope.talk = function () {
+    if ($scope.say !='') {
+      i ++
+      $scope.question = $scope.questions[i];
+      $scope.say = '';
+    }
+  };
+});
